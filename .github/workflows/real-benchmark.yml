@@ -12,6 +12,7 @@ jobs:
     env:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       OPENAI_MODEL: gpt-4o-mini
+      DEEPEVAL_MODEL: gpt-4o-mini
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -33,6 +34,8 @@ jobs:
         run: python domain_assistant.py
       - name: Evaluate answers
         run: python evaluate_answers.py
+      - name: Run framework comparison bonus
+        run: python bonus_framework_compare.py
       - name: Run reranking bonus
         run: python bonus_rerank.py
       - name: Finalize exercises and reflection
@@ -43,7 +46,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add artifacts/actual_answers.json artifacts/benchmark_results.json artifacts/bonus_rerank_results.json exercises.md reflection.md
+          git add artifacts/actual_answers.json artifacts/benchmark_results.json artifacts/bonus_framework_comparison.json artifacts/bonus_rerank_results.json exercises.md reflection.md
           git diff --cached --quiet && exit 0
-          git commit -m "eval: add real benchmark results and reflection"
+          git commit -m "eval: add real benchmark results, bonuses, and reflection"
           git push
