@@ -65,16 +65,23 @@ def _metric_bundle(model: str):
         FaithfulnessMetric,
         GEval,
     )
+    from deepeval.models import OpenAIModel
     from deepeval.test_case import SingleTurnParams
+
+    judge = OpenAIModel(
+        model=model,
+        temperature=0,
+        generation_kwargs={"max_tokens": 512},
+    )
 
     common = {
         "threshold": None,
-        "model": model,
+        "model": judge,
         "include_reason": True,
         "async_mode": False,
     }
     return {
-        "faithfulness": FaithfulnessMetric(**common),
+        "faithfulness": FaithfulnessMetric(**common, truths_extraction_limit=15),
         "relevance": AnswerRelevancyMetric(**common),
         "context_recall": ContextualRecallMetric(**common),
         "context_precision": ContextualPrecisionMetric(**common),
@@ -92,7 +99,7 @@ def _metric_bundle(model: str):
                 SingleTurnParams.EXPECTED_OUTPUT,
             ],
             threshold=None,
-            model=model,
+            model=judge,
             async_mode=False,
         ),
     }
@@ -104,6 +111,16 @@ def _measure(metric: Any, test_case: Any) -> dict[str, Any]:
     if score is None:
         raise RuntimeError(f"{metric.__class__.__name__} returned no score")
     return {"score": float(score), "reason": getattr(metric, "reason", None)}
+
+
+def _context_texts(contexts: list[dict[str, Any]]) -> list[str]:
+    texts: list[str] = []
+    for ctx in contexts:
+        text = ctx.get("evidence", ctx.get("text"))
+        if not text:
+            raise KeyError("Each golden context must include either 'evidence' or 'text'.")
+        texts.append(text)
+    return texts
 
 
 def _render_section(rows: list[dict[str, Any]], summary: dict[str, Any], model: str, deepeval_version: str) -> str:
@@ -158,6 +175,11 @@ def main() -> int:
     if not os.getenv("OPENAI_API_KEY"):
         raise RuntimeError("OPENAI_API_KEY is missing. Put it in .env or export it before running.")
 
+    # DeepEval defaults to a very short per-attempt timeout for judge LLM calls.
+    # The lab compares 20 cases across five metrics, so a single call can exceed
+    # the default limit even when the model is otherwise healthy.
+    os.environ.setdefault("DEEPEVAL_PER_ATTEMPT_TIMEOUT_SECONDS_OVERRIDE", "300")
+
     model = os.getenv("DEEPEVAL_MODEL") or os.getenv("OPENAI_MODEL") or "gpt-4o-mini"
     golden = _load(GOLDEN_PATH)
     actual = _load(ACTUAL_PATH)
@@ -188,7 +210,7 @@ def main() -> int:
             input=pair["question"],
             actual_output=actual_row["actual_answer"],
             expected_output=pair["expected_answer"],
-            context=[ctx["evidence"] for ctx in pair["contexts"]],
+            context=_context_texts(pair["contexts"]),
             retrieval_context=retrieved_context,
         )
 

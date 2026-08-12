@@ -1,0 +1,185 @@
+{
+  "method": "rerank_by_overlap",
+  "results": [
+    {
+      "id": "E01",
+      "recall_before": 1.0,
+      "recall_after": 1.0,
+      "precision_before": 1.0,
+      "precision_after": 1.0,
+      "delta_precision": 0.0,
+      "same_chunk_set": true
+    },
+    {
+      "id": "E02",
+      "recall_before": 1.0,
+      "recall_after": 1.0,
+      "precision_before": 0.7,
+      "precision_after": 1.0,
+      "delta_precision": 0.30000000000000004,
+      "same_chunk_set": true
+    },
+    {
+      "id": "E03",
+      "recall_before": 0.9230769230769231,
+      "recall_after": 0.9230769230769231,
+      "precision_before": 1.0,
+      "precision_after": 1.0,
+      "delta_precision": 0.0,
+      "same_chunk_set": true
+    },
+    {
+      "id": "E04",
+      "recall_before": 1.0,
+      "recall_after": 1.0,
+      "precision_before": 1.0,
+      "precision_after": 1.0,
+      "delta_precision": 0.0,
+      "same_chunk_set": true
+    },
+    {
+      "id": "E05",
+      "recall_before": 0.9642857142857143,
+      "recall_after": 0.9642857142857143,
+      "precision_before": 1.0,
+      "precision_after": 1.0,
+      "delta_precision": 0.0,
+      "same_chunk_set": true
+    },
+    {
+      "id": "M01",
+      "recall_before": 0.896551724137931,
+      "recall_after": 0.896551724137931,
+      "precision_before": 1.0,
+      "precision_after": 1.0,
+      "delta_precision": 0.0,
+      "same_chunk_set": true
+    },
+    {
+      "id": "M02",
+      "recall_before": 0.625,
+      "recall_after": 0.625,
+      "precision_before": 0.95,
+      "precision_after": 1.0,
+      "delta_precision": 0.050000000000000044,
+      "same_chunk_set": true
+    },
+    {
+      "id": "M03",
+      "recall_before": 0.9736842105263158,
+      "recall_after": 0.9736842105263158,
+      "precision_before": 1.0,
+      "precision_after": 1.0,
+      "delta_precision": 0.0,
+      "same_chunk_set": true
+    },
+    {
+      "id": "M04",
+      "recall_before": 0.9642857142857143,
+      "recall_after": 0.9642857142857143,
+      "precision_before": 1.0,
+      "precision_after": 1.0,
+      "delta_precision": 0.0,
+      "same_chunk_set": true
+    },
+    {
+      "id": "M05",
+      "recall_before": 0.9642857142857143,
+      "recall_after": 0.9642857142857143,
+      "precision_before": 1.0,
+      "precision_after": 1.0,
+      "delta_precision": 0.0,
+      "same_chunk_set": true
+    },
+    {
+      "id": "M06",
+      "recall_before": 0.8275862068965517,
+      "recall_after": 0.8275862068965517,
+      "precision_before": 1.0,
+      "precision_after": 1.0,
+      "delta_precision": 0.0,
+      "same_chunk_set": true
+    },
+    {
+      "id": "M07",
+      "recall_before": 0.9166666666666666,
+      "recall_after": 0.9166666666666666,
+      "precision_before": 0.6388888888888888,
+      "precision_after": 1.0,
+      "delta_precision": 0.36111111111111116,
+      "same_chunk_set": true
+    },
+    {
+      "id": "H01",
+      "recall_before": 0.8333333333333334,
+      "recall_after": 0.8333333333333334,
+      "precision_before": 1.0,
+      "precision_after": 1.0,
+      "delta_precision": 0.0,
+      "same_chunk_set": true
+    },
+    {
+      "id": "H02",
+      "recall_before": 0.625,
+      "recall_after": 0.625,
+      "precision_before": 1.0,
+      "precision_after": 1.0,
+      "delta_precision": 0.0,
+      "same_chunk_set": true
+    },
+    {
+      "id": "H03",
+      "recall_before": 0.975609756097561,
+      "recall_after": 0.975609756097561,
+      "precision_before": 1.0,
+      "precision_after": 1.0,
+      "delta_precision": 0.0,
+      "same_chunk_set": true
+    },
+    {
+      "id": "H04",
+      "recall_before": 0.9032258064516129,
+      "recall_after": 0.9032258064516129,
+      "precision_before": 1.0,
+      "precision_after": 1.0,
+      "delta_precision": 0.0,
+      "same_chunk_set": true
+    },
+    {
+      "id": "H05",
+      "recall_before": 0.918918918918919,
+      "recall_after": 0.918918918918919,
+      "precision_before": 1.0,
+      "precision_after": 1.0,
+      "delta_precision": 0.0,
+      "same_chunk_set": true
+    },
+    {
+      "id": "A01",
+      "recall_before": 0.11538461538461539,
+      "recall_after": 0.11538461538461539,
+      "precision_before": 0.5,
+      "precision_after": 1.0,
+      "delta_precision": 0.5,
+      "same_chunk_set": true
+    },
+    {
+      "id": "A02",
+      "recall_before": 0.9642857142857143,
+      "recall_after": 0.9642857142857143,
+      "precision_before": 0.95,
+      "precision_after": 1.0,
+      "delta_precision": 0.050000000000000044,
+      "same_chunk_set": true
+    },
+    {
+      "id": "A03",
+      "recall_before": 0.875,
+      "recall_after": 0.875,
+      "precision_before": 1.0,
+      "precision_after": 1.0,
+      "delta_precision": 0.0,
+      "same_chunk_set": true
+    }
+  ]
+}
